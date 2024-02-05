@@ -8,7 +8,7 @@ Created on Thu Aug 24 00:25:14 2023
 
 import os
 import time
-
+from tqdm import tqdm
 import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib.colors import ListedColormap
@@ -238,7 +238,7 @@ def main(rep, patch_num, reproduce_mode, total_disp_among_rate, disp_within_rate
     meta_obj.meta_distribution_data_all_time_to_csv_gz(dis_data_all_time=meta_obj.get_meta_microsite_environment_values(environment_name='y_axis_environment'), 
                                                        file_name=goal_path+'/'+'rep=%d-meta_y_axis_phenotype_all_time.csv.gz'%(rep), 
                                                        index=['y_axis_environment_values'], columns=columns, mode='w')
-    for time_step in range(all_time_step): 
+    for time_step in tqdm(range(all_time_step)): 
         write_in_logger_info = ''
         write_in_logger_info += 'time_step=%d \n'%time_step
         #print('time_step=%d'%time_step)
